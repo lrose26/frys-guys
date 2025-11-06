@@ -4,4 +4,6 @@ library(tidyverse)
 library(writexl)
 library(ggplot2)
 
-fry_data = read_excel("C:/Users/laure/Downloads/Food Truck Raw Data.xlsx)
+fry_data = read_excel("C:/Users/laure/Downloads/Food Truck Raw Data.xlsx")
+
+
