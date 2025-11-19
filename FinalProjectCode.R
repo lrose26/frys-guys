@@ -64,8 +64,9 @@ tidy_fry_data |>
   ggplot(aes(x = weekday, y = quantity_sold, fill = weekday)) +
   geom_boxplot() +
   facet_wrap(~ city) +
-  scale_fill_manual(values = c("lavender", "mintgreen")) +
+  scale_fill_manual(values = c("lavender", "aquamarine")) +
   labs(x = "Weekday Status", y = "Quantity Sold")
+
 
 
 
