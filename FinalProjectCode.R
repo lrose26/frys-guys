@@ -12,9 +12,15 @@ tidy_fry_data = raw_fry_data |> select(!c("London", "Waterloo", "Toronto")) |> j
 tidy_fry_data |> ggplot(aes(x = quantity_sold, y = temperature)) + geom_point() +
 geom_smooth(method = "lm")
 
+# no correlation
 tidy_fry_data |> ggplot(aes(x = quantity_sold, y = temperature)) + geom_point() +
 geom_smooth(method = "lm") +
 facet_wrap(~city)
+
+tidy_fry_data |> ggplot(aes(x = quantity_sold, y = temperature)) + geom_point() +
+geom_smooth(method = "lm") +
+facet_wrap(~probability_of_precipitation)
+
 
 
 
