@@ -35,7 +35,15 @@ tidy_fry_data |> ggplot(aes(x = probability_of_precipitation, y = quantity_sold)
 geom_smooth(method = "lm") + stat_cor(method = "pearson") +
 facet_wrap(~city)
 
+# 0 = no festival, 1 = fesitval 
+tidy_fry_data |> ggplot(aes(x = festival, y = quantity_sold)) + geom_point() +
+geom_smooth(method = "lm") + stat_cor(method = "pearson") +
+facet_wrap(~city)
 
+# 0 = weekend, including Friday, 1 = weekday
+tidy_fry_data |> ggplot(aes(x = weekday, y = quantity_sold)) + geom_point() +
+geom_smooth(method = "lm") + stat_cor(method = "pearson") +
+facet_wrap(~city)
 
 
 
