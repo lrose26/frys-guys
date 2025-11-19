@@ -9,20 +9,21 @@ raw_fry_data = read_excel("Edited Food Truck Raw Data.xlsx")
 tidy_fry_data = raw_fry_data |> select(!c("London", "Waterloo", "Toronto")) |> janitor::clean_names()
 
 # no correlation 
-tidy_fry_data |> ggplot(aes(x = quantity_sold, y = temperature)) + geom_point() +
+tidy_fry_data |> ggplot(aes(x = temperature, y = quantity_sold)) + geom_point() +
 geom_smooth(method = "lm")
 
 # no correlation
-tidy_fry_data |> ggplot(aes(x = quantity_sold, y = temperature)) + geom_point() +
+tidy_fry_data |> ggplot(aes(x = temperature, y = quantity_sold)) + geom_point() +
 geom_smooth(method = "lm") +
 facet_wrap(~city)
 
-tidy_fry_data |> ggplot(aes(x = quantity_sold, y = probability_of_precipitation)) + geom_point() +
+tidy_fry_data |> ggplot(aes(x = probability_of_precipitation, y = quantity_sold)) + geom_point() +
 geom_smooth(method = "lm")
 
-tidy_fry_data |> ggplot(aes(x = quantity_sold, y = probability_of_precipitation)) + geom_point() +
+tidy_fry_data |> ggplot(aes(x = probability_of_precipitation, y = quantity_sold)) + geom_point() +
 geom_smooth(method = "lm") +
 facet_wrap(~city)
+
 
 
 
