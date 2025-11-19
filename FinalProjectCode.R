@@ -28,12 +28,13 @@ facet_wrap(~city)
 
 # added correlation coefficients to verify
 tidy_fry_data |> ggplot(aes(x = temperature, y = quantity_sold)) + geom_point() +
-geom_smooth(method = "lm") + stat_cor(method = "person") +
+geom_smooth(method = "lm") + stat_cor(method = "pearson") +
 facet_wrap(~city)
 
 tidy_fry_data |> ggplot(aes(x = probability_of_precipitation, y = quantity_sold)) + geom_point() +
-geom_smooth(method = "lm") + stat_cor(method = "person") +
+geom_smooth(method = "lm") + stat_cor(method = "pearson") +
 facet_wrap(~city)
+
 
 
 
