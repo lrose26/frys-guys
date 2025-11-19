@@ -53,6 +53,19 @@ tidy_fry_data |>
   scale_fill_manual(values = c("coral", "steelblue")) +
   labs(x = "Festival Status", y = "Quantity Sold")
 
+# for weekday
+tidy_fry_data = tidy_fry_data |> 
+  mutate(festival = factor(weekday, 
+                          levels = c(0, 1),
+                          labels = c("Weekend", "Weekday")))
+
+
+tidy_fry_data |> 
+  ggplot(aes(x = weekday, y = quantity_sold, fill = weekday)) +
+  geom_boxplot() +
+  facet_wrap(~ city) +
+  scale_fill_manual(values = c("lavender", "mintgreen")) +
+  labs(x = "Weekday Status", y = "Quantity Sold")
 
 
 
