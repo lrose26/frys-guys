@@ -40,11 +40,15 @@ geom_smooth(method = "lm") + stat_cor(method = "pearson") +
 facet_wrap(~city)
 
 # use box plot to ensure no skewness
+fry_fest =  factor(tidy_fry_data$festival, 
+                              levels = c(0, 1),
+                              labels = c("No Festival", "Festival"))
 tidy_fry_data |> ggplot(aes(x = festival, y = quantity_sold, fill = festival)) +
   geom_boxplot() +
   facet_wrap(~ city) +
   scale_fill_manual(values = c("coral", "steelblue")) +
   labs(x = "Festival Status", y = "Quantity Sold")
+
 
 
 
