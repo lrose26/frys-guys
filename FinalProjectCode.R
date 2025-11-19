@@ -40,9 +40,10 @@ geom_smooth(method = "lm") + stat_cor(method = "pearson") +
 facet_wrap(~city)
 
 # use box plot to ensure no skewness
-tidy_fry_data |> ggplot(aes(x = festival, y = quantity_sold)) + geom_boxplot() +
+tidy_fry_data |> ggplot(aes(x = festival, y = quantity_sold, group = city)) + geom_boxplot() +
 facet_wrap(~city)
 
+tidy_fry_data |> ggplot(aes(x = festival, y = quantity_sold, group = city)) + geom_boxplot()
 
 
 
