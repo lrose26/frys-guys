@@ -17,9 +17,13 @@ tidy_fry_data |> ggplot(aes(x = quantity_sold, y = temperature)) + geom_point() 
 geom_smooth(method = "lm") +
 facet_wrap(~city)
 
-tidy_fry_data |> ggplot(aes(x = quantity_sold, y = temperature)) + geom_point() +
+tidy_fry_data |> ggplot(aes(x = quantity_sold, y = probability_of_precipitation)) + geom_point() +
+geom_smooth(method = "lm")
+
+tidy_fry_data |> ggplot(aes(x = quantity_sold, y = probability_of_precipitation)) + geom_point() +
 geom_smooth(method = "lm") +
-facet_wrap(~probability_of_precipitation)
+facet_wrap(~city)
+
 
 
 
