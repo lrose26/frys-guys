@@ -55,7 +55,7 @@ tidy_fry_data |>
 
 # for weekday
 tidy_fry_data = tidy_fry_data |> 
-  mutate(festival = factor(weekday, 
+  mutate(weekday = factor(weekday, 
                           levels = c(0, 1),
                           labels = c("Weekend", "Weekday")))
 
@@ -66,6 +66,7 @@ tidy_fry_data |>
   facet_wrap(~ city) +
   scale_fill_manual(values = c("lavender", "aquamarine")) +
   labs(x = "Weekday Status", y = "Quantity Sold")
+
 
 
 
