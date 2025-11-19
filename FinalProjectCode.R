@@ -37,7 +37,7 @@ facet_wrap(~city)
 
 # using geom_col() because of the 0 and 1 variable
 # 0 = no festival, 1 = festival 
-tidy_fry_data |> ggplot(aes(x = festival, y = quantity_sold)) + geom_col(color = festival) +
+tidy_fry_data |> ggplot(aes(x = festival, y = quantity_sold, fill = festival)) + geom_col() +
 facet_wrap(~city)
 
 # 0 = weekend, including Friday, 1 = weekday
@@ -46,6 +46,7 @@ facet_wrap(~city)
 
 tidy_fry_data |> ggplot(aes(x = weekday, y = quantity_sold)) + geom_boxplot() +
 facet_wrap(~city)
+
 
 
 
