@@ -88,6 +88,38 @@ tidy_fry_data |>
   scale_fill_manual(values = c("lavender", "aquamarine")) +
   labs(x = "Weekday Status", y = "Quantity Sold")
 
+# plots using revenue:
+
+tidy_fry_data |> ggplot(aes(x = temperature, y = revenue)) + geom_point() +
+geom_smooth(method = "lm")
+
+tidy_fry_data |> ggplot(aes(x = temperature, y = revenue)) + geom_point() +
+geom_smooth(method = "lm") +
+facet_wrap(~city)
+
+
+tidy_fry_data |> ggplot(aes(x = probability_of_precipitation, y = revenue)) + geom_point() +
+geom_smooth(method = "lm")
+
+tidy_fry_data |> ggplot(aes(x = probability_of_precipitation, y = revenue)) + geom_point() +
+geom_smooth(method = "lm") +
+facet_wrap(~city)
+
+
+tidy_fry_data |> 
+  ggplot(aes(x = festival, y = revenue, fill = festival)) +
+  geom_boxplot() +
+  facet_wrap(~ city) +
+  scale_fill_manual(values = c("khaki1", "dodgerblue4")) +
+  labs(x = "Festival Status", y = "Quantity Sold")
+
+tidy_fry_data |> 
+  ggplot(aes(x = weekday, y = revenue, fill = weekday)) +
+  geom_boxplot() +
+  facet_wrap(~ city) +
+  scale_fill_manual(values = c("hotpink", "honeydew2")) +
+  labs(x = "Weekday Status", y = "Quantity Sold")
+
 
 
 
