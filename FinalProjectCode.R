@@ -31,6 +31,9 @@ tidy_fry_data = tidy_fry_data |> mutate(
 tidy_fry_data = tidy_fry_data |> mutate(
   total_expenses = food_costs + travel_costs)
 
+tidy_fry_data = tidy_fry_data |> mutate(
+  revenue = total_sales - total_expenses)
+
 # no correlation 
 tidy_fry_data |> ggplot(aes(x = temperature, y = quantity_sold)) + geom_point() +
 geom_smooth(method = "lm")
@@ -84,6 +87,7 @@ tidy_fry_data |>
   facet_wrap(~ city) +
   scale_fill_manual(values = c("lavender", "aquamarine")) +
   labs(x = "Weekday Status", y = "Quantity Sold")
+
 
 
 
