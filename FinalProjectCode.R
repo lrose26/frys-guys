@@ -111,15 +111,22 @@ tidy_fry_data |>
   geom_boxplot() +
   facet_wrap(~ city) +
   scale_fill_manual(values = c("khaki1", "dodgerblue4")) +
-  labs(x = "Festival Status", y = "Quantity Sold")
+  labs(x = "Festival Status", y = "Revenue")
 
 tidy_fry_data |> 
   ggplot(aes(x = weekday, y = revenue, fill = weekday)) +
   geom_boxplot() +
   facet_wrap(~ city) +
   scale_fill_manual(values = c("hotpink", "honeydew2")) +
-  labs(x = "Weekday Status", y = "Quantity Sold")
+  labs(x = "Weekday Status", y = "Revenue")
 
+# the big picture maybe?
+
+tidy_fry_data |> 
+  ggplot(aes(x = city, y = revenue, fill = city)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("indianred1", "lightblue1", "lightgoldenrod", "darkolivegreen1")) +
+  labs(x = "City", y = "Revenue")
 
 
 
