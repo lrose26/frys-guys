@@ -14,10 +14,13 @@ tidy_fry_data = tidy_fry_data |> mutate(
   )
 
 tidy_fry_data = tidy_fry_data |> mutate(
-  food_costs = case_when(city  == "Hamilton" ~ 3.49,
+  expenses_per_burger = case_when(city  == "Hamilton" ~ 3.49,
                          city == "London" ~ 2.05,
                          city == "Waterloo" ~ 2.26,
                          city == "Toronto" ~ 4.10))
+
+tidy_fry_data = tidy_fry_data |> mutate(
+  food_costs = expenses_per_burger * quantity_sold)
 
 tidy_fry_data = tidy_fry_data |> mutate(
   travel_costs = case_when(city == "Hamilton" ~ 16.04,
@@ -81,6 +84,7 @@ tidy_fry_data |>
   facet_wrap(~ city) +
   scale_fill_manual(values = c("lavender", "aquamarine")) +
   labs(x = "Weekday Status", y = "Quantity Sold")
+
 
 
 
