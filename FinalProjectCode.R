@@ -13,6 +13,13 @@ tidy_fry_data = tidy_fry_data |> mutate(
   total_sales = quantity_sold * price
   )
 
+tidy_fry_data = tidy_fry_data |> mutate(
+  food_costs = case_when(city  == "Hamilton" ~ 3.49,
+                         city == "London" ~ 2.05,
+                         city == "Waterloo" ~ 2.26,
+                         city == "Toronto" ~ 4.10))
+    
+
 # no correlation 
 tidy_fry_data |> ggplot(aes(x = temperature, y = quantity_sold)) + geom_point() +
 geom_smooth(method = "lm")
@@ -66,6 +73,7 @@ tidy_fry_data |>
   facet_wrap(~ city) +
   scale_fill_manual(values = c("lavender", "aquamarine")) +
   labs(x = "Weekday Status", y = "Quantity Sold")
+
 
 
 
