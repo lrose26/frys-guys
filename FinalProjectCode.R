@@ -153,6 +153,8 @@ city_regression = lm(revenue ~ city, data = tidy_fry_data)
 
 summary(city_regression) 
 
+full_model = lm(revenue ~ precip_percent + temperature + weekday + festival + city, data = tidy_fry_data)
+
 
 
 
