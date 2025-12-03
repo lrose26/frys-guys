@@ -161,10 +161,11 @@ full_model = list(
   Weekday = day_regression,
   Festival = fest_regression,
   City = city_regression,
-  Combined = combined_model
+  Combined = full_model
 )
 
 summary(full_model)
+
 
 
 
