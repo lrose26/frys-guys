@@ -153,19 +153,7 @@ city_regression = lm(revenue ~ city, data = tidy_fry_data)
 
 summary(city_regression) 
 
-# all regression models side by side
-library(broom)
-full_model = list(
-  Precipitation = precip_regression,
-  Temperature = temp_regression,
-  Weekday = day_regression,
-  Festival = fest_regression,
-  City = city_regression,
-  Combined = full_model
-)
 
-coef(full_model)
-summary(full_model)
 
 
 
