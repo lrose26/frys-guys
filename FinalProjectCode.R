@@ -133,7 +133,7 @@ tidy_fry_data |>
 
 # big regression models
 
-precip_regression = lm(revenue ~ probability_of_precipitation, data = tidy_fry_data)
+precip_regression = lm(revenue ~ precip_percent, data = tidy_fry_data)
 
 summary(precip_regression) 
 
@@ -157,9 +157,10 @@ full_regression = lm(revenue ~ city, data = tidy_fry_data) +
   lm(revenue ~ festival, data = tidy_fry_data) + 
   lm(revenue ~ weekday, data = tidy_fry_data) +
   lm(revenue ~ temperature, data = tidy_fry_data) +
-  lm(revenue ~ probability_of_precipitation, data = tidy_fry_data)
+  lm(revenue ~ precip_percent, data = tidy_fry_data)
 
 summary(full_regression)
+
 
 
 
