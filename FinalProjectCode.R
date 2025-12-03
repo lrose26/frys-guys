@@ -164,7 +164,9 @@ full_model = list(
   Combined = full_model
 )
 
+coef(full_model)
 summary(full_model)
+
 
 
 
