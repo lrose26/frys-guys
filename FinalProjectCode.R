@@ -128,7 +128,9 @@ tidy_fry_data |>
   scale_fill_manual(values = c("indianred1", "lightblue1", "lightgoldenrod", "darkolivegreen1")) +
   labs(x = "City", y = "Revenue")
 
+# big regression model
 
+regression = tidy_fry_data |> lm(revenue ~ probability_of_precipitation)
 
 
 
