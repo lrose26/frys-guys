@@ -130,9 +130,10 @@ tidy_fry_data |>
 
 # big regression model
 
-regression = lm(revenue ~ probability_of_precipitation, data = tidy_fry_data,
-   method = "qr", model = TRUE, x = FALSE, y = FALSE, qr = TRUE,
-   singular.ok = TRUE)
+regression = lm(revenue ~ probability_of_precipitation, data = tidy_fry_data)
+
+summary(regression) 
+
 
 
 
