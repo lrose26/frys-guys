@@ -130,7 +130,8 @@ tidy_fry_data |>
 
 # big regression model
 
-regression = tidy_fry_data |> lm(revenue ~ probability_of_precipitation)
+regression = lm(revenue ~ probability_of_precipitation, data = tidy_fry_data)
+
 
 
 
