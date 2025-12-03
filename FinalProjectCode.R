@@ -34,6 +34,9 @@ tidy_fry_data = tidy_fry_data |> mutate(
 tidy_fry_data = tidy_fry_data |> mutate(
   revenue = total_sales - total_expenses)
 
+tidy_fry_data = tidy_fry_data |> mutate(
+  percip_percent = probability_of_precipitation * 100
+  
 # no correlation 
 tidy_fry_data |> ggplot(aes(x = temperature, y = quantity_sold)) + geom_point() +
 geom_smooth(method = "lm")
@@ -128,16 +131,35 @@ tidy_fry_data |>
   scale_fill_manual(values = c("indianred1", "lightblue1", "lightgoldenrod", "darkolivegreen1")) +
   labs(x = "City", y = "Revenue")
 
-# big regression model
+# big regression models
 
-regression = lm(revenue ~ probability_of_precipitation, data = tidy_fry_data)
+precip_regression = lm(revenue ~ probability_of_precipitation, data = tidy_fry_data)
 
-summary(regression) 
+summary(precip_regression) 
 
+temp_regression = lm(revenue ~ temperature, data = tidy_fry_data)
 
+summary(temp_regression) 
 
+day_regression = lm(revenue ~ weekday, data = tidy_fry_data)
 
+summary(day_regression) 
 
+fest_regression = lm(revenue ~ festival, data = tidy_fry_data)
+
+summary(fest_regression) 
+
+city_regression = lm(revenue ~ city, data = tidy_fry_data)
+
+summary(city_regression) 
+
+full_regression = lm(revenue ~ city, data = tidy_fry_data) + 
+  lm(revenue ~ festival, data = tidy_fry_data) + 
+  lm(revenue ~ weekday, data = tidy_fry_data) +
+  lm(revenue ~ temperature, data = tidy_fry_data) +
+  lm(revenue ~ probability_of_precipitation, data = tidy_fry_data)
+
+summary(full_regression)
 
 
 
