@@ -35,7 +35,7 @@ tidy_fry_data = tidy_fry_data |> mutate(
   revenue = total_sales - total_expenses)
 
 tidy_fry_data = tidy_fry_data |> mutate(
-  percip_percent = probability_of_precipitation * 100
+  percip_percent = probability_of_precipitation * 100)
   
 # no correlation 
 tidy_fry_data |> ggplot(aes(x = temperature, y = quantity_sold)) + geom_point() +
@@ -160,6 +160,7 @@ full_regression = lm(revenue ~ city, data = tidy_fry_data) +
   lm(revenue ~ probability_of_precipitation, data = tidy_fry_data)
 
 summary(full_regression)
+
 
 
 
