@@ -178,6 +178,7 @@ facet_wrap(~ city, ncol = 2) +
 scale_color_manual(values = c("Weekend" = "darkseagreen", "Weekday" = "darkorchid4")) +
 labs(
 title = "Precipitation vs Revenue by City",
+  subtitle = "Comparing weekday sales to weekend sales",
 x = "Precipitation (%)",
 y = "Revenue ($)") 
 
@@ -190,8 +191,10 @@ facet_wrap(~ city, ncol = 2) +
 scale_color_manual(values = c("Festival" = "firebrick1", "No Festival" = "lavenderblush3")) +
 labs(
 title = "Precipitation vs Revenue by City",
+  subtitle = "Comparing sales at festivals to non-festival days",
 x = "Precipitation (%)",
 y = "Revenue ($)")
+
 
 
 
