@@ -32,17 +32,17 @@ tidy_fry_data = tidy_fry_data |> mutate(
   total_expenses = food_costs + travel_costs)
 
 tidy_fry_data = tidy_fry_data |> mutate(
-  revenue = total_sales - total_expenses)
+  profit = total_sales - total_expenses)
 
 tidy_fry_data = tidy_fry_data |> mutate(
   precip_percent = probability_of_precipitation * 100)
 
 # correlation for revenue
-tidy_fry_data |> ggplot(aes(x = temperature, y = revenue)) + geom_point() +
+tidy_fry_data |> ggplot(aes(x = temperature, y = profit)) + geom_point() +
 geom_smooth(method = "lm") + stat_cor(method = "pearson") +
 facet_wrap(~city)
 
-tidy_fry_data |> ggplot(aes(x = probability_of_precipitation, y = revenue)) + geom_point() +
+tidy_fry_data |> ggplot(aes(x = probability_of_precipitation, y = profit)) + geom_point() +
 geom_smooth(method = "lm") + stat_cor(method = "pearson") +
 facet_wrap(~city)
 
@@ -77,98 +77,104 @@ tidy_fry_data |>
 
 # plots using revenue:
 
-tidy_fry_data |> ggplot(aes(x = temperature, y = revenue)) + geom_point() +
+tidy_fry_data |> ggplot(aes(x = temperature, y = profit)) + geom_point() +
 geom_smooth(method = "lm")
 
-tidy_fry_data |> ggplot(aes(x = temperature, y = revenue)) + geom_point() +
+tidy_fry_data |> ggplot(aes(x = temperature, y = profit)) + geom_point() +
 geom_smooth(method = "lm") +
 facet_wrap(~city)
 
 
-tidy_fry_data |> ggplot(aes(x = precip_percent, y = revenue)) + geom_point() +
-geom_smooth(method = "lm")
+tidy_fry_data |> ggplot(aes(x = precip_percent, y = profit)) + geom_point() +
+geom_smooth(method = "lm") + 
+labs(
+  title = "How Precipitation Effects Profit",
+  subtitle = "As chances of precipitation increases, profit decreases."
+  x = "Chance of Precipitation",
+  y = "Profit"
 
-tidy_fry_data |> ggplot(aes(x = precip_percent, y = revenue)) + geom_point() +
+tidy_fry_data |> ggplot(aes(x = precip_percent, y = profit)) + geom_point() +
 geom_smooth(method = "lm") +
 facet_wrap(~city)
 
 
 tidy_fry_data |> 
-  ggplot(aes(x = festival, y = revenue, fill = festival)) +
+  ggplot(aes(x = festival, y = profit, fill = festival)) +
   geom_boxplot() +
   facet_wrap(~ city) +
   scale_fill_manual(values = c("khaki1", "dodgerblue4")) +
-  labs(x = "Festival Status", y = "Revenue")
+  labs(x = "Festival Status", y = "Profit")
 
 tidy_fry_data |> 
-  ggplot(aes(x = weekday, y = revenue, fill = weekday)) +
+  ggplot(aes(x = weekday, y = profit, fill = weekday)) +
   geom_boxplot() +
   facet_wrap(~ city) +
   scale_fill_manual(values = c("hotpink", "honeydew2")) +
-  labs(x = "Weekday Status", y = "Revenue")
+  labs(x = "Weekday Status", y = "Profit")
 
 # the big picture maybe?
 
 tidy_fry_data |> 
-  ggplot(aes(x = city, y = revenue, fill = city)) +
+  ggplot(aes(x = city, y = profit, fill = city)) +
   geom_boxplot() +
   scale_fill_manual(values = c("indianred1", "lightblue1", "lightgoldenrod", "darkolivegreen1")) +
-  labs(x = "City", y = "Revenue")
+  labs(x = "City", y = "Profit")
 
 # big regression models
 
-precip_regression = lm(revenue ~ precip_percent, data = tidy_fry_data)
+precip_regression = lm(profit ~ precip_percent, data = tidy_fry_data)
 
 summary(precip_regression) 
 
-temp_regression = lm(revenue ~ temperature, data = tidy_fry_data)
+temp_regression = lm(profit ~ temperature, data = tidy_fry_data)
 
 summary(temp_regression) 
 
-day_regression = lm(revenue ~ weekday, data = tidy_fry_data)
+day_regression = lm(profit ~ weekday, data = tidy_fry_data)
 
 summary(day_regression) 
 
-fest_regression = lm(revenue ~ festival, data = tidy_fry_data)
+fest_regression = lm(profit ~ festival, data = tidy_fry_data)
 
 summary(fest_regression) 
 
-city_regression = lm(revenue ~ city, data = tidy_fry_data)
+city_regression = lm(profit ~ city, data = tidy_fry_data)
 
 summary(city_regression) 
 
-full_regression = lm(revenue ~ precip_percent + weekday + festival + city, data = tidy_fry_data)
+full_regression = lm(profit ~ precip_percent + weekday + festival + city, data = tidy_fry_data)
 
 summary(full_regression)
 
 
 # testing regression visualization
 
-regression = lm(revenue ~ precip_percent + weekday + city, data = tidy_fry_data)
+regression = lm(profit ~ precip_percent + weekday + city, data = tidy_fry_data)
 
-ggplot(regression, aes(x = precip_percent, y = revenue, color = weekday)) +
+ggplot(regression, aes(x = precip_percent, y = profit, color = weekday)) +
 geom_point(alpha = 0.4, size = 2) +
 geom_line(aes(y = predict(regression)), linewidth = 1.2) +
 facet_wrap(~ city, ncol = 2) +
 scale_color_manual(values = c("Weekend" = "darkseagreen", "Weekday" = "darkorchid4")) +
 labs(
-title = "Precipitation vs Revenue by City",
+title = "Precipitation vs Profit by City",
   subtitle = "Comparing weekday sales to weekend sales",
 x = "Precipitation (%)",
-y = "Revenue ($)") 
+y = "Profit ($)") 
 
-fest_regression = lm(revenue ~ precip_percent + festival + city, data = tidy_fry_data)
+fest_regression = lm(profit ~ precip_percent + festival + city, data = tidy_fry_data)
 
-ggplot(tidy_fry_data, aes(x = precip_percent, y = revenue, color = festival)) +
+ggplot(tidy_fry_data, aes(x = precip_percent, y = profit, color = festival)) +
 geom_point(alpha = 0.4, size = 2) +
 geom_line(aes(y = predict(fest_regression)), linewidth = 1.2) +
 facet_wrap(~ city, ncol = 2) +
 scale_color_manual(values = c("Festival" = "firebrick1", "No Festival" = "lavenderblush3")) +
 labs(
-title = "Precipitation vs Revenue by City",
+title = "Precipitation vs Profit by City",
   subtitle = "Comparing sales at festivals to non-festival days",
 x = "Precipitation (%)",
-y = "Revenue ($)")
+y = "Profit ($)")
+
 
 
 
