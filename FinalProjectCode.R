@@ -88,7 +88,7 @@ facet_wrap(~city)
 tidy_fry_data |> ggplot(aes(x = precip_percent, y = profit)) + geom_point() +
 geom_smooth(method = "lm") + 
 labs(
-  title = "How Precipitation Effects Profit",
+  title = "How Precipitation Affects Profit",
   subtitle = "As chances of precipitation increases, profit decreases.",
   x = "Chance of Precipitation",
   y = "Profit")
@@ -97,7 +97,7 @@ tidy_fry_data |> ggplot(aes(x = precip_percent, y = profit)) + geom_point() +
 geom_smooth(method = "lm") +
 facet_wrap(~city) +
 labs(
-  title = "How Precipitation Effects Profit",
+  title = "How Precipitation Affects Profit",
   subtitle = "As chances of precipitation increases, profit decreases.",
   x = "Chance of Precipitation",
   y = "Profit")
@@ -179,6 +179,7 @@ title = "Precipitation vs Profit by City",
   subtitle = "Comparing sales at festivals to non-festival days",
 x = "Precipitation (%)",
 y = "Profit ($)")
+
 
 
 
