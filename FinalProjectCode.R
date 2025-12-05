@@ -37,7 +37,7 @@ tidy_fry_data = tidy_fry_data |> mutate(
 tidy_fry_data = tidy_fry_data |> mutate(
   precip_percent = probability_of_precipitation * 100)
 
-# correlation for revenue
+# correlation for profit
 tidy_fry_data |> ggplot(aes(x = temperature, y = profit)) + geom_point() +
 geom_smooth(method = "lm") + stat_cor(method = "pearson") +
 facet_wrap(~city)
@@ -75,7 +75,7 @@ tidy_fry_data |>
   scale_fill_manual(values = c("lavender", "aquamarine")) +
   labs(x = "Weekday Status", y = "Quantity Sold")
 
-# plots using revenue:
+# plots using profit:
 
 tidy_fry_data |> ggplot(aes(x = temperature, y = profit)) + geom_point() +
 geom_smooth(method = "lm")
@@ -174,6 +174,7 @@ title = "Precipitation vs Profit by City",
   subtitle = "Comparing sales at festivals to non-festival days",
 x = "Precipitation (%)",
 y = "Profit ($)")
+
 
 
 
