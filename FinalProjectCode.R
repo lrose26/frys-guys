@@ -46,31 +46,6 @@ tidy_fry_data |> ggplot(aes(x = probability_of_precipitation, y = revenue)) + ge
 geom_smooth(method = "lm") + stat_cor(method = "pearson") +
 facet_wrap(~city)
 
-# no correlation 
-tidy_fry_data |> ggplot(aes(x = temperature, y = quantity_sold)) + geom_point() +
-geom_smooth(method = "lm")
-
-# no correlation
-tidy_fry_data |> ggplot(aes(x = temperature, y = quantity_sold)) + geom_point() +
-geom_smooth(method = "lm") +
-facet_wrap(~city)
-
-
-tidy_fry_data |> ggplot(aes(x = probability_of_precipitation, y = quantity_sold)) + geom_point() +
-geom_smooth(method = "lm")
-
-tidy_fry_data |> ggplot(aes(x = probability_of_precipitation, y = quantity_sold)) + geom_point() +
-geom_smooth(method = "lm") +
-facet_wrap(~city)
-
-# added correlation coefficients to verify
-tidy_fry_data |> ggplot(aes(x = temperature, y = quantity_sold)) + geom_point() +
-geom_smooth(method = "lm") + stat_cor(method = "pearson") +
-facet_wrap(~city)
-
-tidy_fry_data |> ggplot(aes(x = probability_of_precipitation, y = quantity_sold)) + geom_point() +
-geom_smooth(method = "lm") + stat_cor(method = "pearson") +
-facet_wrap(~city)
 
 # use box plot to ensure no skewness
 tidy_fry_data = tidy_fry_data |> 
@@ -110,10 +85,10 @@ geom_smooth(method = "lm") +
 facet_wrap(~city)
 
 
-tidy_fry_data |> ggplot(aes(x = probability_of_precipitation, y = revenue)) + geom_point() +
+tidy_fry_data |> ggplot(aes(x = precip_percent, y = revenue)) + geom_point() +
 geom_smooth(method = "lm")
 
-tidy_fry_data |> ggplot(aes(x = probability_of_precipitation, y = revenue)) + geom_point() +
+tidy_fry_data |> ggplot(aes(x = precip_percent, y = revenue)) + geom_point() +
 geom_smooth(method = "lm") +
 facet_wrap(~city)
 
@@ -194,6 +169,7 @@ title = "Precipitation vs Revenue by City",
   subtitle = "Comparing sales at festivals to non-festival days",
 x = "Precipitation (%)",
 y = "Revenue ($)")
+
 
 
 
