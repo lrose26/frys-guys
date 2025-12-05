@@ -135,7 +135,7 @@ tidy_fry_data |>
   ggplot(aes(x = city, y = profit, fill = city)) +
   geom_boxplot() +
   scale_fill_manual(values = c("indianred1", "lightblue1", "lightgoldenrod", "darkolivegreen1")) +
-  labs(x = "City", y = "Profit")
+  labs(title = "Profit by City", subtitle = "London seems to be the city with the highest profit, while the lowest profit came from Waterloo", x = "City", y = "Profit")
 
 # big regression models
 
@@ -191,6 +191,7 @@ title = "Precipitation vs Profit by City",
   subtitle = "Comparing sales at festivals to non-festival days",
 x = "Precipitation (%)",
 y = "Profit ($)")
+
 
 
 
