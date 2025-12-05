@@ -111,11 +111,23 @@ tidy_fry_data |>
   labs(x = "Festival Status", y = "Profit")
 
 tidy_fry_data |> 
+  ggplot(aes(x = festival, y = profit, fill = festival)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("khaki1", "dodgerblue4")) +
+  labs(title = "How Selling at a Festival Vs. Not Affects Profit", subtitle = "Selling at a festival highly increases overall profit", x = "Festival Status", y = "Profit")
+
+tidy_fry_data |> 
   ggplot(aes(x = weekday, y = profit, fill = weekday)) +
   geom_boxplot() +
   facet_wrap(~ city) +
   scale_fill_manual(values = c("hotpink", "honeydew2")) +
   labs(x = "Weekday Status", y = "Profit")
+
+tidy_fry_data |> 
+  ggplot(aes(x = weekday, y = profit, fill = weekday)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("hotpink", "honeydew2")) +
+  labs(title = "How Weekday/Weekend Affects Profit", subtitle = "Weekends bring in more profit compared to weekdays", x = "Weekday Status", y = "Profit")
 
 # the big picture maybe?
 
@@ -179,6 +191,7 @@ title = "Precipitation vs Profit by City",
   subtitle = "Comparing sales at festivals to non-festival days",
 x = "Precipitation (%)",
 y = "Profit ($)")
+
 
 
 
