@@ -194,17 +194,8 @@ x = "Precipitation (%)",
 y = "Revenue ($)")
 
 
-all_regression = lm(revenue ~ precip_percent + festival + weekday + city, data = tidy_fry_data)
 
-ggplot(tidy_fry_data, aes(x = precip_percent, y = revenue, color = weekday)) +
-geom_point(alpha = 0.4, size = 2) +
-geom_line(aes(y = predict(all_regression)), linewidth = 1.2) +
-facet_wrap(~ city, ncol = 2) +
-scale_color_manual(values = c("Weekend" = "darkseagreen", "Weekday" = "darkorchid4", "Festival" = "firebrick1", "No Festival" = "lavenderblush3")) +
-labs(
-title = "Precipitation vs Revenue by City",
-x = "Precipitation (%)",
-y = "Revenue ($)")
+
 
 
 
