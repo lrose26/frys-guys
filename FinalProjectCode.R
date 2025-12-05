@@ -173,26 +173,27 @@ regression = lm(revenue ~ precip_percent + weekday + city, data = tidy_fry_data)
 
 ggplot(regression, aes(x = precip_percent, y = revenue, color = weekday)) +
 geom_point(alpha = 0.4, size = 2) +
-geom_line(aes(y = predict(model)), linewidth = 1.2) +
+geom_line(aes(y = predict(regression)), linewidth = 1.2) +
 facet_wrap(~ city, ncol = 2) +
-scale_color_manual(values = c("Weekend" = "#10b981", "Weekday" = "#f59e0b")) +
+scale_color_manual(values = c("Weekend" = "darkseagreen", "Weekday" = "darkorchid4")) +
 labs(
 title = "Precipitation vs Revenue by City",
 x = "Precipitation (%)",
 y = "Revenue ($)") 
 
-
-regression = lm(revenue ~ precip_percent + weekday + city, data = tidy_fry_data)
 
 ggplot(tidy_fry_data, aes(x = precip_percent, y = revenue, color = weekday)) +
 geom_point(alpha = 0.4, size = 2) +
-geom_line(aes(y = predict(model)), linewidth = 1.2) +
+geom_line(aes(y = predict(regression)), linewidth = 1.2) +
 facet_wrap(~ city, ncol = 2) +
-scale_color_manual(values = c("Weekend" = "#10b981", "Weekday" = "#f59e0b")) +
+scale_color_manual(values = c("Weekend" = "darkseagreen", "Weekday" = "darkorchid4")) +
 labs(
 title = "Precipitation vs Revenue by City",
 x = "Precipitation (%)",
-y = "Revenue ($)") 
+y = "Revenue ($)")
+
+
+
 
 
 
