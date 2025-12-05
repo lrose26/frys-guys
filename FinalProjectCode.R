@@ -36,7 +36,16 @@ tidy_fry_data = tidy_fry_data |> mutate(
 
 tidy_fry_data = tidy_fry_data |> mutate(
   precip_percent = probability_of_precipitation * 100)
-  
+
+# correlation for revenue
+tidy_fry_data |> ggplot(aes(x = temperature, y = revenue)) + geom_point() +
+geom_smooth(method = "lm") + stat_cor(method = "pearson") +
+facet_wrap(~city)
+
+tidy_fry_data |> ggplot(aes(x = probability_of_precipitation, y = revenue)) + geom_point() +
+geom_smooth(method = "lm") + stat_cor(method = "pearson") +
+facet_wrap(~city)
+
 # no correlation 
 tidy_fry_data |> ggplot(aes(x = temperature, y = quantity_sold)) + geom_point() +
 geom_smooth(method = "lm")
@@ -156,6 +165,7 @@ summary(city_regression)
 full_regression = lm(revenue ~ precip_percent + weekday + festival + city, data = tidy_fry_data)
 
 summary(full_regression)
+
 
 
 
